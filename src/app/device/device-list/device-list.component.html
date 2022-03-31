@@ -1,0 +1,143 @@
+<div class="container" style="overflow-x:auto;">
+
+  <h3 style="text-align: center">List of Device</h3>
+<!--  <a (click)="openDialogAdd()">Add New Device</a>-->
+
+  <div class="row">
+    <div class="col-1">Category</div>
+    <div class="col-2">
+      <select name="idCategory" (change)="categoryChange($event)" class="form-control">
+        <option value="">Choose a category</option>
+        <option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="col-1">Brand</div>
+    <div class="col-2">
+      <input type="text" (keyup)="brandKeyUp($event)" class="form-control">
+    </div>
+    <div class="col-1">Block</div>
+    <div class="col-2">
+      <select name="" class="form-control" (change)="blockChange($event)">
+        <option value="">Choose a block</option>
+        <option *ngFor="let block of blockList" [value]="block.id">{{block.name}}</option>
+      </select>
+    </div>
+    <div class="col-1">Room</div>
+    <div class="col-2">
+      <select name="" id="" class="form-control" (change)="roomChange($event)">
+        <option value="">Choose a room</option>
+        <option *ngFor="let room of roomList" [value]="room.id">{{room.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">Model</div>
+    <div class="col-2">
+      <input type="text" class="form-control" (keyup)="modelKeyUp($event)">
+    </div>
+    <div class="col-1">CPU Type</div>
+    <div class="col-2">
+      <input type="text" class="form-control" (keyup)="cpuTypeKeyUp($event)">
+    </div>
+    <div class="col-1">Memory</div>
+    <div class="col-2">
+      <input type="text" class="form-control" (keyup)="memoryKeyUp($event)">
+    </div>
+    <div class="col-1">Storage Type</div>
+    <div class="col-2">
+      <input type="text" class="form-control" (keyup)="storageTypeKeyUp($event)">
+    </div>
+  </div>
+
+  <div>
+    <h5>
+    Quantity:
+      <span *ngFor="let recipient of quantityDeviceMap | keyvalue">
+        {{recipient.key}} : {{recipient.value}}
+        <span class="comma">,</span>
+      </span>
+    </h5>
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <th>Order</th>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Use Date</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Serial</th>
+
+<!--    <th>CPU Type</th>-->
+<!--    <th>CPU Generation</th>-->
+<!--    <th>Memory (GB)</th>-->
+<!--    <th>Monitor</th>-->
+<!--    <th>Storage Type</th>-->
+<!--    <th>Storage Size (GB)</th>-->
+<!--    <th>Storage Type</th>-->
+<!--    <th>Storage Size (GB)</th>-->
+
+    <th>Detail</th>
+<!--    <th>Description</th>-->
+    <th>Room</th>
+    <th>Block</th>
+<!--    <th>Action</th>-->
+<!--    <th>Action</th>-->
+<!--    <th>Action</th>-->
+<!--    <th>Action</th>-->
+    </thead>
+    <tbody>
+    <tr *ngFor="let device of deviceList; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{device.id}}</td>
+      <td>{{device.category.name}}</td>
+      <td>{{device.useDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{device.brand |  uppercase}}</td>
+      <td>{{device.model}}</td>
+      <td>{{device.serial}}</td>
+
+<!--      <td>{{device.cpuType}}</td>-->
+<!--      <td>{{device.cpuGeneration}}</td>-->
+<!--      <td>{{device.memory}}</td>-->
+<!--      <td>{{device.monitor}}</td>-->
+<!--      <td>{{device.storageType}}</td>-->
+<!--      <td>{{device.storageSize}}</td>-->
+<!--      <td>{{device.storageType2}}</td>-->
+<!--      <td>{{device.storageSize2}}</td>-->
+
+      <td>
+        <div [hidden]="device.cpuType==''">
+        CPU:{{device.cpuType}}-{{device.cpuGeneration}},
+        RAM:{{device.memory}} GB,
+        Monitor:{{device.monitor}},
+        Storage:{{device.storageType}}-
+        {{device.storageSize}} GB,
+        {{device.storageType2}}
+        {{device.storageSize2}}
+        </div>
+      </td>
+
+<!--      <td>{{device.description}}</td>-->
+      <td>{{device.room.name}}</td>
+      <td>{{device.room.block.name}}</td>
+
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-primary" (click)="openDialogEdit(device)">Edit</button>-->
+<!--      </td>-->
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-warning">Upgrade</button>-->
+<!--      </td>-->
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-success" (click)="openDialogMove(device)">Move</button>-->
+<!--      </td>-->
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-danger" (click)="openDialogDelete(device)">Delete</button>-->
+<!--      </td>-->
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<h3>Move</h3>
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <div class="col-4">ID</div>
+      <div class="col-8">{{data.id}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Category</div>
+      <div class="col-8">{{data.category.name}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Use Date</div>
+      <div class="col-8">{{data.useDate | date: 'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Brand</div>
+      <div class="col-8">{{data.brand}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Model</div>
+      <div class="col-8">{{data.model}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Serial</div>
+      <div class="col-8">{{data.serial}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Detail</div>
+      <div class="col-8">
+        CPU:{{data.cpuType}}-{{data.cpuGeneration}},
+        RAM:{{data.memory}} GB,
+        Monitor:{{data.monitor}},
+        Storage:{{data.storageType}}-
+        {{data.storageSize}} GB,
+        {{data.storageType2}}
+        {{data.storageSize2}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">Description</div>
+      <div class="col-8">{{data.description}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">History</div>
+      <div class="col-8">
+        <table class="table table-bordered">
+          <thead>
+          <td>ID</td>
+          <td>Move Date</td>
+          <td>From</td>
+          <td>To</td>
+          </thead>
+          <tbody>
+            <tr *ngFor="let history of data.historyList">
+              <td>{{history.id}}</td>
+              <td>{{history.moveDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{history.fromRoom}}</td>
+              <td>{{history.toRoom}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">Block</div>
+      <div class="col-8">{{data.block.name}}</div>
+    </div>
+    <div class="row">
+      <div class="col-4">Room</div>
+      <div class="col-8">{{data.room.name}}</div>
+    </div>
+  </div>
+  <div class="col-6">
+    <h4>Điều chuyển đến</h4>
+    <div [formGroup]="formMoveDTO">
+      <div class="row">
+        <div class="col-2">
+          <label>Move Date</label>
+        </div>
+        <div class="col-10">
+          <input type="date" class="form-control" formControlName="moveDate">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-2">Block</div>
+        <div class="col-4">
+          <select name="" class="form-control" (change)="loadRoom($event)">
+            <option [value]="0">Choose a block</option>
+            <option *ngFor="let block of blockList" [ngValue]="block">{{block.name}}</option>
+          </select>
+        </div>
+        <div class="col-2">Room</div>
+        <div class="col-4">
+          <select name="" class="form-control" formControlName="room">
+            <option value="">Choose a room</option>
+            <option *ngFor="let room of this.roomListByBlock_Id" [ngValue]="room">{{room.name}}</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8"></div>
+  <div class="col-2">
+    <button style="width: 100%" class="btn btn-primary" (click)="move()">Move</button>
+  </div>
+  <div class="col-2">
+    <button style="width: 100%" type="button" class="btn btn-light" (click)="closeDialogMove()">Close</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+

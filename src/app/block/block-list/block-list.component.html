@@ -1,0 +1,25 @@
+<div class="container">
+  <h3 style="text-align: center">List of Block</h3>
+  <a (click)="openDialogAdd()" style="color: #0e1c42;font-weight: bolder">Add New Block</a>
+  <table class="table table-bordered">
+    <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let block of blockList">
+      <td>{{block.id}}</td>
+      <td>{{block.name}}</td>
+      <td>{{block.description}}</td>
+      <td style="text-align: center">
+          <button (click)="openDialogEdit(block)" class="btn btn-success">Edit</button>
+      </td>
+
+      <td style="text-align: center">
+        <button (click)="openDialogDelete(block)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

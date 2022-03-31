@@ -1,0 +1,14 @@
+<div>
+  <h5>Bạn có muốn xóa Block: {{data.name}}</h5>
+</div>
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-4">
+    <button style="width: 100%" class="btn btn-success" (click)="closeDialogDelete()">NO</button>
+  </div>
+  <div class="col-2"></div>
+  <div class="col-4">
+    <button style="width: 100%" class="btn btn-danger" (click)="delete(data)">YES</button>
+  </div>
+  <div class="col-1"></div>
+</div>

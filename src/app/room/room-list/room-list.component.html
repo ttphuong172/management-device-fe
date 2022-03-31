@@ -1,0 +1,31 @@
+<div class="container">
+  <h3 style="text-align: center">List of Room</h3>
+  <a (click)="openDialogAdd()">Add New Room</a>
+  <table class="table table-bordered">
+    <thead>
+      <th>Order</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Block</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let room of roomList; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{room.name}}</td>
+      <td>{{room.description}}</td>
+      <td>{{room.block.name}}</td>
+
+      <td style="text-align: center">
+        <button class="btn btn-primary" routerLink="{{room.id}}">Detail</button>
+      </td>
+
+      <td style="text-align: center">
+        <button class="btn btn-success" (click)="openDialogEdit(room)">Edit</button>
+      </td>
+      <td style="text-align: center">
+        <button class="btn btn-danger" (click)="openDialogDelete(room)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h3 style="text-align: center">List of Category</h3>
+  <a (click)="openDialogAdd()" style="color: #0e1c42;font-weight: bolder">Add New Category</a>
+  <table class="table table-bordered">
+    <thead>
+    <th>ID</th>
+    <th>Name</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let category of categoryList ">
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td style="text-align: center">
+        <button class="btn btn-primary" (click)="openDialogEdit(category)">Edit</button>
+      </td>
+      <td style="text-align: center">
+        <button class="btn btn-danger" (click)="openDialogDelete(category)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

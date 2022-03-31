@@ -1,0 +1,81 @@
+<h3>Add New Room</h3>
+<form [formGroup]="roomForm" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-3">
+          <label for="name">Name</label>
+        </div>
+        <div class="col-9">
+          <input class="form-control" type="text" id="name" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="alert alert-danger">
+        <div *ngIf="name.errors?.['required']">
+          Description is required.
+        </div>
+        <div *ngIf="name.errors?.['maxlength']">
+          Description up to 30 characters.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-3">
+          <label for="description">Description</label>
+        </div>
+        <div class="col-9">
+          <input class="form-control" type="text" id="description" formControlName="description">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div *ngIf="description.invalid && (description.dirty || description.touched)"
+           class="alert alert-danger">
+        <div *ngIf="description.errors?.['required']">
+          Description is required.
+        </div>
+        <div *ngIf="description.errors?.['maxlength']">
+          Description up to 30 characters.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-3">
+          <label>Block</label>
+        </div>
+        <div class="col-9">
+          <select class="form-control" formControlName="block">
+            <option *ngFor="let block of blockList" [ngValue]="block">{{block.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8"></div>
+    <div class="col-2">
+      <button style="width: 100%" class="btn btn-primary" [disabled]="!roomForm.valid">Save</button>
+    </div>
+    <div class="col-2">
+      <button style="width: 100%" type="button" class="btn btn-light" (click)="closeDialogAdd()">Cancel</button>
+    </div>
+  </div>
+
+</form>
+
+{{roomForm.value | json}}

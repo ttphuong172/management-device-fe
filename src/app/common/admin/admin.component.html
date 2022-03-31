@@ -1,0 +1,40 @@
+<div class="container">
+<!--  <app-header></app-header>-->
+<!--  <div style="text-align: center">-->
+<!--    <a routerLink="categorys">Category</a>-->
+<!--    - -->
+<!--    <a routerLink="blocks">Block</a>-->
+<!--    - -->
+<!--    <a routerLink="rooms">Room</a>-->
+<!--    - -->
+<!--    <a routerLink="devices">Device</a>-->
+<!--  </div>-->
+
+  <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/logo.png" alt="" style="height: 80px">
+    </a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="rooms" style="color: #0e1c42;font-size: 18px">Room</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="devices" style="color: #0e1c42;font-size: 18px">Device</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"routerLink="categorys" style="color: #0e1c42;font-size: 18px">Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="blocks" style="color: #0e1c42;font-size: 18px">Block</a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
