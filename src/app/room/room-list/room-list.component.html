@@ -1,6 +1,28 @@
 <div class="container">
   <h3 style="text-align: center">List of Room</h3>
+  <div class="row">
+
+    <div class="col-md-1">Name</div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" (keyup)="nameKeyUp($event)">
+    </div>
+    <div class="col-md-1">Description</div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" (keyup)="descriptionKeyUp($event)">
+    </div>
+    <div class="col-md-1">Block</div>
+    <div class="col-md-2">
+      <select name="" id="" class="form-control" (change)="blockChange($event)">
+        <option value="">Choose a block</option>
+        <option *ngFor="let block of blockList" [value]="block.id">{{block.name}}</option>
+      </select>
+    </div>
+  </div>
+
   <a (click)="openDialogAdd()">Add New Room</a>
+
+
+  <div style="overflow-x:auto;">
   <table class="table table-bordered">
     <thead>
       <th>Order</th>
@@ -28,4 +50,5 @@
     </tr>
     </tbody>
   </table>
+</div>
 </div>

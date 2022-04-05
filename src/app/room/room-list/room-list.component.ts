@@ -5,6 +5,7 @@ import {RoomAddComponent} from "../room-add/room-add.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RoomDeleteComponent} from "../room-delete/room-delete.component";
 import {RoomEditComponent} from "../room-edit/room-edit.component";
+import {BlockService} from "../../../service/block.service";
 
 @Component({
   selector: 'app-room-list',
@@ -13,14 +14,25 @@ import {RoomEditComponent} from "../room-edit/room-edit.component";
 })
 export class RoomListComponent implements OnInit {
   roomList:any;
+  blockList: any;
+  idBlock='';
+  name='';
+  description='';
   constructor(
     private roomService:RoomService,
+    private blockService:BlockService,
     private matDialog:MatDialog
   ) { }
 
   ngOnInit(): void {
     this.roomService.findAll().subscribe(
-      (data)=>{this.roomList=data}
+      (data)=>{this.roomList=data},
+      ()=>{},
+      ()=>{
+        this.blockService.findAll().subscribe(
+          (data)=>{this.blockList=data}
+        )
+      }
     )
   }
 
@@ -66,5 +78,27 @@ export class RoomListComponent implements OnInit {
         this.ngOnInit();
       }
     )
+  }
+  loadRoomList(){
+    this.roomService.searchRoom(this.idBlock,this.name,this.description).subscribe(
+      (data)=>{this.roomList=data}
+    )
+  }
+
+  blockChange($event: any) {
+    this.idBlock = $event.target.value;
+    this.loadRoomList();
+  }
+
+
+
+  nameKeyUp($event: any) {
+    this.name = $event.target.value;
+    this.loadRoomList()
+  }
+
+  descriptionKeyUp($event: any) {
+    this.description = $event.target.value;
+    this.loadRoomList()
   }
 }

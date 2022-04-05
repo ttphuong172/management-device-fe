@@ -7,6 +7,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DeviceAddComponent} from "../../device/device-add/device-add.component";
 import {DeviceDeleteComponent} from "../../device/device-delete/device-delete.component";
 import {DeviceMoveComponent} from "../../device/device-move/device-move.component";
+import {DeviceUpgradeComponent} from "../../device/device-upgrade/device-upgrade.component";
 
 
 @Component({
@@ -29,6 +30,7 @@ export class RoomDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getRoom()
   }
 
@@ -75,10 +77,11 @@ export class RoomDetailComponent implements OnInit {
     )
   }
 
-  openDialogAdd() {
+  openDialogAdd(room:any) {
     const dialogRefAdd = this.matDialog.open(DeviceAddComponent, {
       width: '1000px',
-      disableClose: true
+      disableClose: true,
+      data:room
     })
     dialogRefAdd.afterClosed().subscribe(
       () => {
@@ -151,4 +154,24 @@ export class RoomDetailComponent implements OnInit {
     }
   }
 
+  openDialogUpgrade(device: any) {
+    const dialogRefAdd = this.matDialog.open(DeviceUpgradeComponent, {
+      width: '800px',
+      data: device,
+      disableClose: true
+    })
+    dialogRefAdd.afterClosed().subscribe(
+      () => {
+      },
+      () => {
+      },
+      () => {
+        this.ngOnInit();
+      }
+    )
+  }
+
+  openDialogDetail(device: any) {
+
+  }
 }

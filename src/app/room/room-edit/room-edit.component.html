@@ -18,7 +18,7 @@
           Description is required.
         </div>
         <div *ngIf="name.errors?.['maxlength']">
-          Description up to 20 characters.
+          Description up to 30 characters.
         </div>
       </div>
     </div>
@@ -67,15 +67,15 @@
   </div>
 
   <div class="row">
-    <div class="col-8"></div>
-    <div class="col-2">
+    <div class="col-md-8"></div>
+    <div class="col-md-2">
       <button style="width: 100%" class="btn btn-primary" [disabled]="!roomForm.valid">Update</button>
     </div>
-    <div class="col-2">
+    <div class="col-md-2">
       <button style="width: 100%" type="button" class="btn btn-light" (click)="closeDialogAdd()">Cancel</button>
     </div>
   </div>
 
 </form>
 
-{{roomForm.value | json}}
+<!--{{roomForm.value | json}}-->

@@ -46,14 +46,14 @@
       <div class="col-8">
         <table class="table table-bordered">
           <thead>
-          <td>ID</td>
+          <td>Order</td>
           <td>Move Date</td>
           <td>From</td>
           <td>To</td>
           </thead>
           <tbody>
-            <tr *ngFor="let history of data.historyList">
-              <td>{{history.id}}</td>
+            <tr *ngFor="let history of data.historyList;index as i">
+              <td>{{i+1}}</td>
               <td>{{history.moveDate | date: 'dd/MM/yyyy'}}</td>
               <td>{{history.fromRoom}}</td>
               <td>{{history.toRoom}}</td>

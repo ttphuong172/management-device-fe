@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {CategoryService} from "../../../service/category.service";
 import {BlockService} from "../../../service/block.service";
 import {RoomService} from "../../../service/room.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DeviceService} from "../../../service/device.service";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -47,12 +48,15 @@ export class DeviceAddComponent implements OnInit {
     private blockService: BlockService,
     private roomService: RoomService,
     private deviceService: DeviceService,
-
-    public dialogRefAdd: MatDialogRef<DeviceAddComponent>
+    public dialogRefAdd: MatDialogRef<DeviceAddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any
   ) {
   }
 
   ngOnInit(): void {
+
+      console.log(this.data)
+
 
     this.categoryService.findAll().subscribe(
       (data) => {
@@ -68,7 +72,8 @@ export class DeviceAddComponent implements OnInit {
           () => {
           },
           () => {
-
+            this.deviceForm.controls['block'].setValue(this.data.block);
+            this.deviceForm.controls['room'].setValue(this.data);
 
           }
         )

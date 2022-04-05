@@ -1,100 +1,110 @@
 <h3 style="text-align: center">Detail of Room</h3>
 <ul>
   <li>
-    <h5>Room:
-     <span *ngIf="room">{{room.name}}</span> - <span *ngIf="room">{{room.block.name}}</span>
-    </h5>
+    <div style="font-size: larger;font-weight: bolder">
+      <span style="font-size: larger">Room: </span>
+      <span *ngIf="room" style="font-size: larger">{{room.name}}</span> -<span *ngIf="room"
+                                                                               style="font-size: larger">{{room.description}}</span>-
+      <span *ngIf="room" style="font-size: larger">{{room.block.name}}</span>
+    </div>
   </li>
 
   <li>
     <h5>Quantity</h5>
-        <ul>
-          <li *ngFor="let recipient of quantityDeviceMap | keyvalue">
-            {{recipient.key}} : {{recipient.value}}
-          </li>
-      </ul>
+    <ul>
+      <li *ngFor="let recipient of quantityDeviceMap | keyvalue">
+        {{recipient.key}} : {{recipient.value}}
+      </li>
+    </ul>
   </li>
 </ul>
 
+<router-outlet></router-outlet>
 
-<a (click)="openDialogAdd()" style="color: #0e1c42;font-weight: bolder">Add New Device</a>
+<a (click)="openDialogAdd(room)" style="color: #0e1c42;font-weight: bolder">Add New Device</a>
 <div style="overflow-x:auto;">
-<table class="table table-bordered table-striped">
-  <thead>
-  <th>Order</th>
-  <th>ID</th>
-  <th>Category</th>
-  <th>Use Date</th>
-  <th>Brand</th>
-  <th>Model</th>
-  <th>Serial</th>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <th>Order</th>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Use Date</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Serial</th>
 
-  <!--    <th>CPU Type</th>-->
-  <!--    <th>CPU Generation</th>-->
-  <!--    <th>Memory (GB)</th>-->
-  <!--    <th>Monitor</th>-->
-  <!--    <th>Storage Type</th>-->
-  <!--    <th>Storage Size (GB)</th>-->
-  <!--    <th>Storage Type</th>-->
-  <!--    <th>Storage Size (GB)</th>-->
+    <!--    <th>CPU Type</th>-->
+    <!--    <th>CPU Generation</th>-->
+    <!--    <th>Memory (GB)</th>-->
+    <!--    <th>Monitor</th>-->
+    <!--    <th>Storage Type</th>-->
+    <!--    <th>Storage Size (GB)</th>-->
+    <!--    <th>Storage Type</th>-->
+    <!--    <th>Storage Size (GB)</th>-->
 
-  <th>Detail</th>
-  <!--    <th>Description</th>-->
-  <th>Room</th>
-  <th>Block</th>
-  <th>Edit</th>
-  <th>Upgrade</th>
-  <th>Move</th>
-  <th>Delete</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let device of deviceList; let i = index">
-    <td>{{i + 1}}</td>
-    <td>{{device.id}}</td>
-    <td>{{device.category.name}}</td>
-    <td>{{device.useDate | date: 'dd/MM/yyyy'}}</td>
-    <td>{{device.brand |  uppercase}}</td>
-    <td>{{device.model}}</td>
-    <td>{{device.serial}}</td>
+    <th>Detail</th>
+    <!--    <th>Description</th>-->
+    <th>Room</th>
+    <th>Block</th>
+    <th>Detail</th>
+    <th>Upgrade</th>
+    <th>Move</th>
+<!--    <th>Delete</th>-->
+    </thead>
+    <tbody>
+    <tr *ngFor="let device of deviceList; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{device.id}}</td>
+      <td>{{device.category.name}}</td>
+      <td>{{device.useDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{device.brand |  uppercase}}</td>
+      <td>{{device.model}}</td>
+      <td>{{device.serial}}</td>
 
-    <!--      <td>{{device.cpuType}}</td>-->
-    <!--      <td>{{device.cpuGeneration}}</td>-->
-    <!--      <td>{{device.memory}}</td>-->
-    <!--      <td>{{device.monitor}}</td>-->
-    <!--      <td>{{device.storageType}}</td>-->
-    <!--      <td>{{device.storageSize}}</td>-->
-    <!--      <td>{{device.storageType2}}</td>-->
-    <!--      <td>{{device.storageSize2}}</td>-->
+      <!--      <td>{{device.cpuType}}</td>-->
+      <!--      <td>{{device.cpuGeneration}}</td>-->
+      <!--      <td>{{device.memory}}</td>-->
+      <!--      <td>{{device.monitor}}</td>-->
+      <!--      <td>{{device.storageType}}</td>-->
+      <!--      <td>{{device.storageSize}}</td>-->
+      <!--      <td>{{device.storageType2}}</td>-->
+      <!--      <td>{{device.storageSize2}}</td>-->
 
-    <td>
-      <div [hidden]="device.cpuType==''">
-      CPU:{{device.cpuType}}-{{device.cpuGeneration}},
-      RAM:{{device.memory}} GB,
-      Monitor:{{device.monitor}},
-      Storage:{{device.storageType}}-
-      {{device.storageSize}} GB,
-      {{device.storageType2}}
-      {{device.storageSize2}}
-      </div>
-    </td>
+      <td>
+        <div [hidden]="device.cpuType==''">
+          CPU:{{device.cpuType}}-{{device.cpuGeneration}},
+          RAM:{{device.memory}} GB,
+          Monitor:{{device.monitor}},
+          Storage:{{device.storageType}}-
+          {{device.storageSize}} GB,
+          {{device.storageType2}}
+          {{device.storageSize2}}
+        </div>
+      </td>
 
-    <!--      <td>{{device.description}}</td>-->
-    <td>{{device.room.name}}</td>
-    <td>{{device.room.block.name}}</td>
+      <!--      <td>{{device.description}}</td>-->
+      <td>{{device.room.name}}</td>
+      <td>{{device.room.block.name}}</td>
 
-    <td style="text-align: center">
-      <button class="btn btn-primary" (click)="openDialogEdit(device)"><i class="fa fa-edit"></i></button>
-    </td>
-    <td style="text-align: center">
-      <button class="btn btn-warning"><i class="fa fa-upload"></i></button>
-    </td>
-    <td style="text-align: center">
-      <button class="btn btn-success" (click)="openDialogMove(device)"><i class="fa fa-exchange"></i></button>
-    </td>
-    <td style="text-align: center">
-      <button class="btn btn-danger" (click)="openDialogDelete(device)"><i class="fa fa-trash"></i></button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-primary" (click)="openDialogEdit(device)"><i class="fa fa-edit"></i></button>-->
+<!--      </td>-->
+      <td style="text-align: center">
+        <button class="btn btn-primary"   [routerLink]="['/admin/devices', device.id]"><i class="fa fa-edit"></i></button>
+      </td>
+      <td style="text-align: center">
+        <button class="btn btn-warning" (click)="openDialogUpgrade(device)"><i class="fa fa-upload"></i></button>
+      </td>
+      <td style="text-align: center">
+        <button class="btn btn-success" (click)="openDialogMove(device)"><i class="fa fa-exchange"></i></button>
+      </td>
+<!--      <td style="text-align: center">-->
+<!--        <button class="btn btn-danger" (click)="openDialogDelete(device)"><i class="fa fa-trash"></i></button>-->
+<!--      </td>-->
+    </tr>
+    </tbody>
+  </table>
+
+
+
 </div>

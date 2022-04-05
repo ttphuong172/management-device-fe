@@ -12,7 +12,7 @@ import {BlockService} from "../../../service/block.service";
 export class RoomAddComponent implements OnInit {
   blockList:any;
   roomForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.maxLength(20)]),
+    name: new FormControl('',[Validators.required,Validators.maxLength(30)]),
     description: new FormControl('',[Validators.required,Validators.maxLength(30)]),
     block: new FormControl('',[Validators.required])
   })

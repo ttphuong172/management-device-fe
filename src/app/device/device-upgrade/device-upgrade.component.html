@@ -1,16 +1,13 @@
-<h3>Add New Device</h3>
-<form [formGroup]="deviceForm" (ngSubmit)="save()">
+<h3>Upgrade Device</h3>
+<form [formGroup]="deviceForm" (ngSubmit)="upgrade()">
 
   <div class="row">
     <div class="col-8">
       <div class="row">
-        <div class="col-2">ID</div>
-        <div class="col-4">
-          <input type="text" class="form-control" formControlName="id">
-        </div>
         <div class="col-2">Category</div>
-        <div class="col-4">
-          <select name="" id="" class="form-control" formControlName="category" (change)="changeCategory($event)">
+        <div class="col-10">
+
+          <select name="" id="" class="form-control" formControlName="category" [compareWith]="compareByID">
             <option value="">Choose a category</option>
             <option *ngFor="let category of categoryList" [ngValue]="category">{{category.name}}</option>
           </select>
@@ -45,17 +42,17 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div *ngIf="brand.invalid && (brand.dirty || brand.touched)"
-           class="alert alert-danger">
-        <div *ngIf="brand.errors?.['required']">
-          Brand is required.
-        </div>
-        <div *ngIf="brand.errors?.['maxlength']">
-          Model up to 20 characters.
-        </div>
-      </div>
-    </div>
+<!--    <div class="col-4">-->
+<!--      <div *ngIf="brand.invalid && (brand.dirty || brand.touched)"-->
+<!--           class="alert alert-danger">-->
+<!--        <div *ngIf="brand.errors?.['required']">-->
+<!--          Brand is required.-->
+<!--        </div>-->
+<!--        <div *ngIf="brand.errors?.['maxlength']">-->
+<!--          Model up to 20 characters.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 
   <div class="row">
@@ -72,20 +69,19 @@
       </div>
     </div>
     <div class="col-4">
-      <div *ngIf="model.invalid && (model.dirty || model.touched)"
-           class="alert alert-danger">
-        <div *ngIf="model.errors?.['required']">
-          Model is required.
-        </div>
-        <div *ngIf="model.errors?.['maxlength']">
-          Model up to 20 characters.
-        </div>
-      </div>
+<!--      <div *ngIf="model.invalid && (model.dirty || model.touched)"-->
+<!--           class="alert alert-danger">-->
+<!--        <div *ngIf="model.errors?.['required']">-->
+<!--          Model is required.-->
+<!--        </div>-->
+<!--        <div *ngIf="model.errors?.['maxlength']">-->
+<!--          Model up to 20 characters.-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 
-
-  <fieldset [disabled]="nameCatelogySelected!='Computer'">
+<!--  <fieldset [disabled]="(nameCatelogySelected!='Computer')">-->
     <div class="row">
       <div class="col-8">
         <div class="row">
@@ -108,10 +104,11 @@
         <div class="row">
           <div class="col-2">CPU</div>
           <div class="col-4">
-            <select class="form-control" name="" id="" formControlName="cpuType">
-              <option value="">------------</option>
-              <option *ngFor="let cpuType of cpuTypeList" [ngValue]="cpuType">{{cpuType}}</option>
-            </select>
+            <input type="text" formControlName="cpuType" class="form-control">
+<!--            <select class="form-control" name="" id="" formControlName="cpuType">-->
+<!--              <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--              <option *ngFor="let cpuType of cpuTypeList" [ngValue]="cpuType">{{cpuType}}</option>-->
+<!--            </select>-->
           </div>
 
           <div class="col-2">Generation</div>
@@ -123,17 +120,18 @@
       <div class="col-4"></div>
     </div>
 
-
     <div class="row">
       <div class="col-8">
         <div class="row">
           <div class="col-2">Storage</div>
           <div class="col-4">
-            <select class="form-control" name="" id="" formControlName="storageType">
-              <option value="">------------</option>
-              <option *ngFor="let storageType of storageTypeList" [ngValue]="storageType">{{storageType}}</option>
-            </select>
+            <input type="text" formControlName="storageType" class="form-control">
+<!--            <select class="form-control" name="" id="" formControlName="storageType">-->
+<!--              <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--              <option *ngFor="let storageType of storageTypeList" [ngValue]="storageType">{{storageType}}</option>-->
+<!--            </select>-->
           </div>
+
           <div class="col-2">Size(GB)</div>
           <div class="col-4">
             <input type="text" class="form-control" formControlName="storageSize">
@@ -148,6 +146,7 @@
         <div class="row">
           <div class="col-2">Storage2</div>
           <div class="col-4">
+<!--            <input type="text" formControlName="storageType2">-->
             <select class="form-control" name="" id="" formControlName="storageType2">
               <option value="">------------</option>
               <option *ngFor="let storageType of storageTypeList" [ngValue]="storageType">{{storageType}}</option>
@@ -162,7 +161,8 @@
       <div class="col-4"></div>
     </div>
 
-  </fieldset>
+<!--  </fieldset>-->
+
 
   <div class="row">
     <div class="col-8">
@@ -182,17 +182,19 @@
 <!--      <div class="row">-->
 <!--        <div class="col-2">Block</div>-->
 <!--        <div class="col-4">-->
-<!--          <select name="" id="" class="form-control" (change)="loadRoom($event)" formControlName="block">-->
-<!--            <option [value]="0">Choose a block</option>-->
-<!--            <option *ngFor="let block of blockList" [ngValue]="block">{{block.name}}</option>-->
-<!--          </select>-->
+<!--          <input type="text" formControlName="block">-->
+<!--&lt;!&ndash;          <select name="" class="form-control" (change)="loadRoom($event)" formControlName="block" [compareWith]="compareByID">&ndash;&gt;-->
+<!--&lt;!&ndash;            <option [value]="0">Choose a block</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option *ngFor="let block of blockList" [ngValue]="block">{{block.name}}</option>&ndash;&gt;-->
+<!--&lt;!&ndash;          </select>&ndash;&gt;-->
 <!--        </div>-->
 <!--        <div class="col-2">Room</div>-->
 <!--        <div class="col-4">-->
-<!--          <select name="" id="" class="form-control" formControlName="room">-->
-<!--            <option value="">Choose a room</option>-->
-<!--            <option *ngFor="let room of this.roomListByBlock_Id" [ngValue]="room">{{room.name}}</option>-->
-<!--          </select>-->
+<!--          <input type="text" formControlName="room">-->
+<!--&lt;!&ndash;          <select name="" id="" class="form-control" formControlName="room" [compareWith]="compareByID">&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="">Choose a room</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option *ngFor="let room of this.roomListByBlock_Id" [ngValue]="room">{{room.name}}</option>&ndash;&gt;-->
+<!--&lt;!&ndash;          </select>&ndash;&gt;-->
 <!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
@@ -204,7 +206,7 @@
   <div class="row">
     <div class="col-8"></div>
     <div class="col-2">
-      <button style="width: 100%" class="btn btn-primary" [disabled]="!deviceForm.valid">Save</button>
+      <button style="width: 100%" class="btn btn-primary" [disabled]="!deviceForm.valid">Upgrade</button>
     </div>
     <div class="col-2">
       <button style="width: 100%" type="button" class="btn btn-light" (click)="closeDialogAdd()">Cancel</button>
@@ -212,6 +214,7 @@
   </div>
 </form>
 
-<!--{{deviceForm.value | json}}-->
+
+
 
 

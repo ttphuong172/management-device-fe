@@ -32,5 +32,8 @@ export class RoomService {
   findRoomById(id:any){
     return this.httpClient.get(environment.apiURL+'/api/rooms/'+ id);
   }
+  searchRoom(idBlock:any,name:any,description:any){
+    return  this.httpClient.get(environment.apiURL+'/api/rooms/search?idBlock='+idBlock+'&name='+ name+'&description='+description);
+}
 
 }

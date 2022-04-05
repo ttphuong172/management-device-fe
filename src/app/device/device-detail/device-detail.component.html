@@ -1,0 +1,109 @@
+<h3>Detail of Device</h3>
+<a [routerLink]="['/admin/rooms', device.room.id]">Chi tiết phòng của thiết bị</a>
+<table class="table table-bordered">
+  <thead>
+    <th>Configuration</th>
+    <th>Detail</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID</td>
+      <td>{{device.id}}</td>
+    </tr>
+  <tr>
+    <td>Category</td>
+    <td>{{device.category.name}}</td>
+  </tr>
+    <tr>
+      <td>Use Date</td>
+      <td>{{device.useDate | date: 'dd/MM/yyyy'}}</td>
+    </tr>
+    <tr>
+      <td>Brand</td>
+      <td>{{device.brand}}</td>
+    </tr>
+    <tr>
+      <td>Model</td>
+      <td>{{device.model}}</td>
+    </tr>
+    <tr>
+      <td>Serial</td>
+      <td>{{device.serial}}</td>
+    </tr>
+    <tr>
+      <td>Detail</td>
+      <td>
+        <div [hidden]="device.cpuType==''">
+          CPU:{{device.cpuType}}-{{device.cpuGeneration}},
+          RAM:{{device.memory}} GB,
+          Monitor:{{device.monitor}},
+          Storage:{{device.storageType}}-
+          {{device.storageSize}} GB,
+          {{device.storageType2}}
+          {{device.storageSize2}}
+        </div>
+      </td>
+    </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{device.description}}</td>
+  </tr>
+  <tr>
+    <td>History Move</td>
+    <td>
+      <table class="table table-bordered">
+        <thead>
+        <td>Order</td>
+        <td>Move Date</td>
+        <td>From</td>
+        <td>To</td>
+        </thead>
+        <tbody>
+        <tr *ngFor="let history of device.historyList; index as i">
+          <td>{{i+1}}</td>
+          <td>{{history.moveDate | date: 'dd/MM/yyyy'}}</td>
+          <td>{{history.fromRoom}}</td>
+          <td>{{history.toRoom}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <tr>
+      <td>History Upgrade</td>
+      <td>
+        <table class="table table-bordered">
+          <thead>
+          <td>Order</td>
+          <td>Upgrade Date</td>
+          <td>Type</td>
+          <td>Old Configuration</td>
+          <td>New Configuration</td>
+          </thead>
+          <tbody>
+          <tr *ngFor="let history of device.historyUpgradeList;index as i">
+            <td>{{i+1}}</td>
+            <td>{{history.upgradeDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{history.typeAccessories}}</td>
+            <td>{{history.oldConfiguration}}</td>
+            <td>{{history.newConfiguration}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+  </tr>
+  <tr>
+    <td>Room</td>
+    <td>{{device.room.name}}-{{device.room.block.name}}</td>
+  </tr>
+
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-2">
+    <button style="width: 100%" class="btn btn-success" (click)="openDialogEdit(device)">Edit</button>
+  </div>
+  <div class="col-md-2">
+    <button style="width: 100%" type="button" class="btn btn-danger" (click)="openDialogDelete(device)" >Delete</button>
+  </div>
+</div>

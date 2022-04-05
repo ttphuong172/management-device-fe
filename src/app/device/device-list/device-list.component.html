@@ -4,26 +4,26 @@
 <!--  <a (click)="openDialogAdd()">Add New Device</a>-->
 
   <div class="row">
-    <div class="col-1">Category</div>
-    <div class="col-2">
+    <div class="col-md-1">Category</div>
+    <div class="col-md-2">
       <select name="idCategory" (change)="categoryChange($event)" class="form-control">
         <option value="">Choose a category</option>
         <option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}</option>
       </select>
     </div>
-    <div class="col-1">Brand</div>
-    <div class="col-2">
+    <div class="col-md-1">Brand</div>
+    <div class="col-md-2">
       <input type="text" (keyup)="brandKeyUp($event)" class="form-control">
     </div>
-    <div class="col-1">Block</div>
-    <div class="col-2">
+    <div class="col-md-1">Block</div>
+    <div class="col-md-2">
       <select name="" class="form-control" (change)="blockChange($event)">
         <option value="">Choose a block</option>
         <option *ngFor="let block of blockList" [value]="block.id">{{block.name}}</option>
       </select>
     </div>
-    <div class="col-1">Room</div>
-    <div class="col-2">
+    <div class="col-md-1">Room</div>
+    <div class="col-md-2">
       <select name="" id="" class="form-control" (change)="roomChange($event)">
         <option value="">Choose a room</option>
         <option *ngFor="let room of roomList" [value]="room.id">{{room.name}}</option>
@@ -32,20 +32,20 @@
   </div>
 
   <div class="row">
-    <div class="col-1">Model</div>
-    <div class="col-2">
+    <div class="col-md-1">Model</div>
+    <div class="col-md-2">
       <input type="text" class="form-control" (keyup)="modelKeyUp($event)">
     </div>
-    <div class="col-1">CPU Type</div>
-    <div class="col-2">
+    <div class="col-md-1">CPU Type</div>
+    <div class="col-md-2">
       <input type="text" class="form-control" (keyup)="cpuTypeKeyUp($event)">
     </div>
-    <div class="col-1">Memory</div>
-    <div class="col-2">
+    <div class="col-md-1">Memory</div>
+    <div class="col-md-2">
       <input type="text" class="form-control" (keyup)="memoryKeyUp($event)">
     </div>
-    <div class="col-1">Storage Type</div>
-    <div class="col-2">
+    <div class="col-md-1">Storage Type</div>
+    <div class="col-md-2">
       <input type="text" class="form-control" (keyup)="storageTypeKeyUp($event)">
     </div>
   </div>
@@ -59,6 +59,10 @@
       </span>
     </h5>
   </div>
+
+
+
+
 
   <div style="overflow-x:auto;">
   <table class="table table-bordered table-striped">
@@ -81,7 +85,7 @@
 <!--    <th>Storage Size (GB)</th>-->
 
     <th>Detail</th>
-<!--    <th>Description</th>-->
+    <th>Description</th>
     <th>Room</th>
     <th>Block</th>
 <!--    <th>Action</th>-->
@@ -120,7 +124,7 @@
         </div>
       </td>
 
-<!--      <td>{{device.description}}</td>-->
+      <td>{{device.description}}</td>
       <td>{{device.room.name}}</td>
       <td>{{device.room.block.name}}</td>
 

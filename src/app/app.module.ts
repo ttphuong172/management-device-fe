@@ -30,6 +30,8 @@ import { AdminComponent } from './common/admin/admin.component';
 import {AdminGuard} from "../service/admin.guard";
 import { DeviceMoveComponent } from './device/device-move/device-move.component';
 import { RoomDetailComponent } from './room/room-detail/room-detail.component';
+import { DeviceUpgradeComponent } from './device/device-upgrade/device-upgrade.component';
+import { DeviceDetailComponent } from './device/device-detail/device-detail.component';
 
 
 
@@ -58,6 +60,8 @@ import { RoomDetailComponent } from './room/room-detail/room-detail.component';
     AdminComponent,
     DeviceMoveComponent,
     RoomDetailComponent,
+    DeviceUpgradeComponent,
+    DeviceDetailComponent,
 
   ],
     imports: [
@@ -70,6 +74,7 @@ import { RoomDetailComponent } from './room/room-detail/room-detail.component';
                 {path: "blocks", component: BlockListComponent},
                 {path: "rooms", component: RoomListComponent},
                 {path: "rooms/:id", component: RoomDetailComponent},
+                {path:"devices/:id",component:DeviceDetailComponent},
                 {path: "devices", component: DeviceListComponent},
                 {path: "categorys", component: CategoryListComponent}
               ]},

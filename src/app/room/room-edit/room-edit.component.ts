@@ -13,7 +13,7 @@ export class RoomEditComponent implements OnInit {
   blockList:any;
   roomForm = new FormGroup({
     id:new FormControl(''),
-    name: new FormControl('',[Validators.required,Validators.maxLength(20)]),
+    name: new FormControl('',[Validators.required,Validators.maxLength(30)]),
     description: new FormControl('',[Validators.required,Validators.maxLength(30)]),
     block: new FormControl('',[Validators.required])
   })

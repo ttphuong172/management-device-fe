@@ -14,12 +14,20 @@ export class DeviceService {
   findAll(){
     return this.httpClient.get(environment.apiURL+'/api/devices')
   }
+  findById(id:any){
+    return this.httpClient.get(environment.apiURL+'/api/devices/' + id)
+  }
   save(device:any){
     return this.httpClient.post(environment.apiURL+'/api/devices',device)
   }
   update(device:any){
     return this.httpClient.put(environment.apiURL+'/api/devices/'+ device.id,device)
   }
+
+  upgrade(device:any){
+    return this.httpClient.put(environment.apiURL+'/api/devices/upgrade/'+ device.id,device)
+  }
+
   move(id:any,roomDTO:any){
     return this.httpClient.put(environment.apiURL+'/api/devices/move/'+ id,roomDTO)
   }

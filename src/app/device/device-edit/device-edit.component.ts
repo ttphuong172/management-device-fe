@@ -38,9 +38,9 @@ export class DeviceEditComponent implements OnInit {
     storageSize2: new FormControl(''),
     description: new FormControl(''),
     block: new FormControl(''),
-    room: new FormControl('',),
-    historyList: new FormControl('',),
-
+    room: new FormControl(''),
+    historyList: new FormControl(''),
+    historyUpgradeList: new FormControl('')
   })
 
 
